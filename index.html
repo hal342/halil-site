@@ -6,7 +6,7 @@
     <title>ESENYURT MUTLU METAL - Hurda Alım Satımı</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -31,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* Arka Plan Resmi */
         body {
             background-image: url('https://r.resimlink.com/mjY_0xanz8Ie.png');
             background-attachment: fixed;
@@ -40,7 +39,6 @@
             background-repeat: no-repeat;
         }
 
-        /* Arka Plan Üstüne Koyu Overlay - %50 */
         body::before {
             content: '';
             position: fixed;
@@ -53,7 +51,6 @@
             z-index: 0;
         }
 
-        /* Animasyonlar */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -78,10 +75,10 @@
 
         @keyframes glow {
             0%, 100% {
-                text-shadow: 0 0 10px rgba(212, 148, 30, 0.3);
+                text-shadow: 0 0 15px rgba(245, 197, 71, 0.4), 0 0 30px rgba(212, 148, 30, 0.3);
             }
             50% {
-                text-shadow: 0 0 25px rgba(212, 148, 30, 0.6), 0 0 40px rgba(212, 148, 30, 0.3);
+                text-shadow: 0 0 30px rgba(245, 197, 71, 0.8), 0 0 60px rgba(212, 148, 30, 0.6), 0 0 90px rgba(245, 197, 71, 0.4);
             }
         }
 
@@ -96,7 +93,38 @@
             }
         }
 
-        /* Header */
+        @keyframes emojiPulse {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 10px rgba(245, 197, 71, 0.5));
+            }
+            50% {
+                transform: scale(1.15) rotate(5deg);
+                filter: drop-shadow(0 0 20px rgba(245, 197, 71, 0.8));
+            }
+        }
+
+        @keyframes titleFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         header {
             background: rgba(15, 15, 15, 0.98);
             padding: 25px 0;
@@ -117,21 +145,32 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 26px;
-            font-weight: 800;
-            color: var(--accent-bright);
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f5c547 0%, #e8b84f 25%, #d4941e 50%, #e8b84f 75%, #f5c547 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-transform: uppercase;
             letter-spacing: 4px;
-            text-shadow: 0 4px 20px rgba(245, 197, 71, 0.4);
+            animation: slideInLeft 0.8s ease, gradientShift 4s ease infinite;
+            filter: drop-shadow(0 2px 15px rgba(245, 197, 71, 0.4));
             transition: all 0.3s ease;
         }
 
         .logo:hover {
-            transform: scale(1.05);
-            text-shadow: 0 6px 30px rgba(245, 197, 71, 0.6);
+            letter-spacing: 5px;
+            filter: drop-shadow(0 4px 25px rgba(245, 197, 71, 0.6));
         }
 
-        /* Main Content */
+        .logo-emoji {
+            font-size: 32px;
+            animation: emojiPulse 2s ease-in-out infinite;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
         main {
             position: relative;
             z-index: 1;
@@ -162,15 +201,26 @@
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 56px;
-            font-weight: 800;
-            color: var(--accent-bright);
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f5c547 0%, #e8b84f 25%, #d4941e 50%, #e8b84f 75%, #f5c547 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            text-shadow: 0 6px 25px rgba(245, 197, 71, 0.4);
-            animation: glow 3s ease-in-out infinite;
+            animation: fadeInDown 0.8s ease, titleFloat 3s ease-in-out infinite, gradientShift 4s ease infinite;
             line-height: 1.2;
+            filter: drop-shadow(0 4px 20px rgba(245, 197, 71, 0.3));
+        }
+
+        .h1-emoji {
+            font-size: 72px;
+            display: block;
+            margin-bottom: 10px;
+            animation: emojiPulse 2s ease-in-out infinite;
         }
 
         .subtitle {
@@ -185,17 +235,20 @@
 
         h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 46px;
-            font-weight: 800;
-            color: var(--accent-bright);
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f5c547, #e8b84f, #d4941e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 40px;
             text-transform: uppercase;
             letter-spacing: 2px;
             border-bottom: 4px solid var(--accent);
             padding-bottom: 20px;
             display: inline-block;
-            text-shadow: 0 4px 15px rgba(245, 197, 71, 0.4);
             animation: fadeInDown 0.8s ease;
+            filter: drop-shadow(0 3px 15px rgba(245, 197, 71, 0.3));
         }
 
         h3 {
@@ -220,26 +273,42 @@
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+            background: linear-gradient(135deg, #f5c547, #e8b84f, #d4941e);
             color: var(--primary);
             padding: 16px 48px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             cursor: pointer;
-            border: 2px solid var(--accent-bright);
+            border: 3px solid var(--accent-bright);
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(245, 197, 71, 0.3);
+            box-shadow: 0 10px 40px rgba(245, 197, 71, 0.5);
             animation: fadeInUp 1.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
-            background: linear-gradient(135deg, var(--accent-bright), var(--accent));
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 50px rgba(245, 197, 71, 0.5);
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 20px 60px rgba(245, 197, 71, 0.7);
             letter-spacing: 3px;
         }
 
@@ -247,7 +316,6 @@
             transform: translateY(-2px);
         }
 
-        /* Grid Layouts */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -296,11 +364,20 @@
         .card h4 {
             font-family: 'Poppins', sans-serif;
             color: var(--accent-bright);
-            font-size: 24px;
+            font-size: 22px;
             margin-bottom: 15px;
             letter-spacing: 1px;
             font-weight: 700;
             text-shadow: 0 2px 10px rgba(245, 197, 71, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-emoji {
+            font-size: 36px;
+            animation: emojiPulse 2.5s ease-in-out infinite;
+            display: inline-block;
         }
 
         .card p {
@@ -310,7 +387,6 @@
             font-weight: 400;
         }
 
-        /* Blog Post */
         .blog-post {
             background: rgba(255, 255, 255, 0.08);
             border-left: 5px solid var(--accent-bright);
@@ -342,13 +418,19 @@
             letter-spacing: 0.5px;
         }
 
+        .blog-date-emoji {
+            font-size: 18px;
+            animation: emojiPulse 2s ease-in-out infinite;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
         .blog-post p {
             color: var(--text-light);
             line-height: 2;
             font-weight: 400;
         }
 
-        /* Contact Form */
         .contact-form {
             max-width: 650px;
             margin: 50px auto;
@@ -409,7 +491,6 @@
             min-height: 140px;
         }
 
-        /* Contact Info */
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -429,6 +510,13 @@
             transition: all 0.4s ease;
             box-shadow: 0 8px 25px rgba(212, 148, 30, 0.15);
             animation: fadeInUp 1s ease;
+        }
+
+        .info-box-emoji {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 15px;
+            animation: emojiPulse 2s ease-in-out infinite;
         }
 
         .info-box:hover {
@@ -463,7 +551,6 @@
             transform: scale(1.05);
         }
 
-        /* Footer */
         footer {
             background: rgba(15, 15, 15, 0.98);
             border-top: 3px solid var(--accent);
@@ -477,12 +564,10 @@
             font-weight: 500;
         }
 
-        /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .container {
                 padding: 0 20px;
@@ -494,12 +579,16 @@
             }
 
             h1 {
-                font-size: 36px;
+                font-size: 42px;
                 letter-spacing: 2px;
             }
 
+            .h1-emoji {
+                font-size: 48px;
+            }
+
             h2 {
-                font-size: 32px;
+                font-size: 36px;
                 letter-spacing: 1.5px;
             }
 
@@ -518,19 +607,35 @@
                 letter-spacing: 2px;
             }
 
+            .logo-emoji {
+                font-size: 24px;
+            }
+
             .card {
                 padding: 25px;
+            }
+
+            .card-emoji {
+                font-size: 28px;
             }
 
             .contact-form {
                 padding: 30px 20px;
                 margin: 30px 0;
             }
+
+            .info-box-emoji {
+                font-size: 32px;
+            }
         }
 
         @media (max-width: 480px) {
             h1 {
                 font-size: 28px;
+            }
+
+            .h1-emoji {
+                font-size: 36px;
             }
 
             h2 {
@@ -545,79 +650,75 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
-            <div class="logo">🏗️ MUTLU METAL</div>
+            <div class="logo"><span class="logo-emoji">🏭</span>MUTLU METAL</div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Home Section -->
         <section id="home">
             <div class="container">
                 <div class="section-content">
+                    <div class="h1-emoji">⚡🔨</div>
                     <h1>ESENYURT MUTLU METAL</h1>
                     <p class="subtitle">Profesyonel Hurda Alım-Satımı & Geri Dönüşüm</p>
-                    <a href="#contact" class="cta-button">İLETİŞİME GEÇİN</a>
+                    <a href="#contact" class="cta-button">📧 İLETİŞİME GEÇİN</a>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
         <section id="about">
             <div class="container">
                 <div class="section-content">
-                    <h2>Hakkımızda</h2>
+                    <h2>📋 Hakkımızda</h2>
                     <p>ESENYURT MUTLU METAL, hurda alım-satımı ve geri dönüşüm sektöründe uzman bir işletmedir. Uzun yılların tecrübesine sahip olarak, müşterilerimize en iyi hizmet sunmayı ve çevre için sorumluluk taşımayı hedefliyoruz.</p>
                     
-                    <h3>Neden Biz?</h3>
-                    <p>✓ Adil fiyatlandırma ve şeffaf hizmet<br>
-                    ✓ Hızlı ve güvenilir alım-satım işlemleri<br>
-                    ✓ Çevre dostu geri dönüşüm uygulamaları<br>
-                    ✓ Profesyonel ve eğitimli personel<br>
-                    ✓ Tüm hurda çeşitlerine açığız</p>
+                    <h3>🏆 Neden Biz?</h3>
+                    <p>✅ Adil fiyatlandırma ve şeffaf hizmet<br>
+                    ✅ Hızlı ve güvenilir alım-satım işlemleri<br>
+                    ✅ Çevre dostu geri dönüşüm uygulamaları<br>
+                    ✅ Profesyonel ve eğitimli personel<br>
+                    ✅ Tüm hurda çeşitlerine açığız</p>
                     
-                    <h3>Vizyon</h3>
+                    <h3>🚀 Vizyon</h3>
                     <p>Türkiye'nin en güvenilir ve profesyonel hurdacılık işletmesi olmak.</p>
                     
-                    <h3>Misyon</h3>
+                    <h3>💡 Misyon</h3>
                     <p>Müşteri memnuniyeti ile çevre koruyuculuğu ilkelerine bağlı kalarak, kaliteli ve etkin hurdacılık hizmetleri sunmak.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Products Section -->
         <section id="products">
             <div class="container">
                 <div class="section-content">
-                    <h2>Ürünlerimiz</h2>
+                    <h2>🏆 Ürünlerimiz</h2>
                     <p>Çeşitli hurda çeşitleri ile hizmet vermekteyiz:</p>
                     
                     <div class="grid-3">
                         <div class="card">
-                            <h4>🔧 Demir & Çelik</h4>
+                            <h4><span class="card-emoji">🔧</span>Demir & Çelik</h4>
                             <p>Tüm çelik hurda çeşitleri, demirli atıklar ve endüstriyel metal hurdası alıyoruz. En iyi fiyatlarla işlem yapıyoruz.</p>
                         </div>
                         <div class="card">
-                            <h4>🥉 Bakır & Pirinç</h4>
+                            <h4><span class="card-emoji">🏠</span>Bakır & Pirinç</h4>
                             <p>Bakır kablolar, pirinç hurdası ve diğer değerli metal hurdası alımımızda ustayız. Piyasa fiyatları üzerinden satın alıyoruz.</p>
                         </div>
                         <div class="card">
-                            <h4>♻️ Aluminyum</h4>
+                            <h4><span class="card-emoji">♻️</span>Aluminyum</h4>
                             <p>Aluminyum hurdası, profiller ve diğer aluminyum atıklarını en iyi fiyatlarla satın alırız. Hızlı ödeme garantisi.</p>
                         </div>
                         <div class="card">
-                            <h4>🏢 Müteahhitlik Atıkları</h4>
+                            <h4><span class="card-emoji">👷</span>Müteahhitlik Atıkları</h4>
                             <p>İnşaat sektörü metal hurdası, tavalar, konstruksiyon atıkları ve daha fazlasını alıyoruz.</p>
                         </div>
                         <div class="card">
-                            <h4>🔩 Makine Hurdaları</h4>
+                            <h4><span class="card-emoji">⚙️</span>Makine Hurdaları</h4>
                             <p>Eski makine atıkları, motor hurdaları ve endüstriyel ekipman kalıntılarını profesyonelce değerlendiriyoruz.</p>
                         </div>
                         <div class="card">
-                            <h4>📦 Diğer Hurdalar</h4>
+                            <h4><span class="card-emoji">📦</span>Diğer Hurdalar</h4>
                             <p>Tüm türdeki metal ve metal olmayan hurdaları kabul ediyoruz. Gümrük ve prosedür işlemleri yapıyoruz.</p>
                         </div>
                     </div>
@@ -625,15 +726,14 @@
             </div>
         </section>
 
-        <!-- Blog Section -->
         <section id="blog">
             <div class="container">
                 <div class="section-content">
-                    <h2>Blog</h2>
+                    <h2>📰 Blog</h2>
                     
                     <div class="blog-post">
                         <h3>Hurda Geri Dönüşümünün Çevre ve Ekonomiye Etkileri</h3>
-                        <p class="blog-date">📅 Yayın Tarihi: 7 Ağustos 2026</p>
+                        <p class="blog-date"><span class="blog-date-emoji">📅</span>Yayın Tarihi: 7 Ağustos 2026</p>
                         
                         <p>
                             <strong>Geri dönüşüm nedir ve neden önemlidir?</strong><br>
@@ -642,7 +742,7 @@
 
                         <p>
                             <strong>Çevresel Faydalar:</strong><br>
-                            Metal geri dönüşümü, maden işletmelerinin sayısını azaltarak doğal kaynakların tüketimini düşürür. Ayrıca, geri dönüşüm sırasında ortaya çıkan karbon salınımları, yeni metal üretiminden %90 oranında daha azdır. Bu da küresel ısınma ve iklim değişlikliği ile mücadelede büyük katkı sağlar.
+                            Metal geri dönüşümü, maden işletmelerinin sayısını azaltarak doğal kaynakların tüketimini düşürür. Ayrıca, geri dönüşüm sırasında ortaya çıkan karbon salınımları, yeni metal üretiminden %90 oranında daha azdır. Bu da küresel ısınma ve iklim değişikliği ile mücadelede büyük katkı sağlar.
                         </p>
 
                         <p>
@@ -659,24 +759,23 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
         <section id="gallery">
             <div class="container">
                 <div class="section-content">
-                    <h2>Galeri</h2>
+                    <h2>🖼️ Galeri</h2>
                     <p>İşletmelerimizin ve hizmetlerimizin görsel sunumu:</p>
                     
                     <div class="grid-3">
                         <div class="card">
-                            <h4>📸 Tesis Fotoğrafları</h4>
+                            <h4><span class="card-emoji">📸</span>Tesis Fotoğrafları</h4>
                             <p>Modern ve güvenli hurdacılık tesislerimiz ile ilgili fotoğraflar ve bilgiler yakında eklenecektir.</p>
                         </div>
                         <div class="card">
-                            <h4>📋 Ürün Katalogları</h4>
+                            <h4><span class="card-emoji">📋</span>Ürün Katalogları</h4>
                             <p>Çeşitli hurda çeşitlerine ait görsel kataloglar ve örnekler görmek için bizimle iletişime geçiniz.</p>
                         </div>
                         <div class="card">
-                            <h4>✨ Başarı Hikayelerimiz</h4>
+                            <h4><span class="card-emoji">✨</span>Başarı Hikayelerimiz</h4>
                             <p>Müşterilerimiz ile beraber gerçekleştirdiğimiz başarılı projeler ve referanslar sunuyoruz.</p>
                         </div>
                     </div>
@@ -684,29 +783,31 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <div class="container">
                 <div class="section-content">
-                    <h2>İletişim</h2>
+                    <h2>📞 İletişim</h2>
                     
                     <div class="contact-info">
                         <div class="info-box">
-                            <h4>📞 Telefon</h4>
+                            <span class="info-box-emoji">☎️</span>
+                            <h4>Telefon</h4>
                             <p><a href="tel:+905445991874">+90 544 599 1874</a></p>
                         </div>
                         <div class="info-box">
-                            <h4>📧 Email</h4>
+                            <span class="info-box-emoji">📧</span>
+                            <h4>Email</h4>
                             <p><a href="mailto:halilmtlluu930@gmail.com">halilmtlluu930@gmail.com</a></p>
                         </div>
                         <div class="info-box">
-                            <h4>📍 Adres</h4>
+                            <span class="info-box-emoji">📍</span>
+                            <h4>Adres</h4>
                             <p>Esenyurt, İstanbul<br>(Detaylı adres yakında eklenecektir)</p>
                         </div>
                     </div>
 
                     <div class="contact-form">
-                        <h3 style="text-align: center; margin-top: 0; font-family: 'Poppins', sans-serif; font-size: 28px;">Bize Mesaj Gönderin</h3>
+                        <h3 style="text-align: center; margin-top: 0; font-family: 'Poppins', sans-serif; font-size: 28px; color: var(--accent-bright);">💌 Bize Mesaj Gönderin</h3>
                         <form id="contactForm">
                             <div class="form-group">
                                 <label for="name">Adınız *</label>
@@ -728,7 +829,7 @@
                                 <label for="message">Mesajınız *</label>
                                 <textarea id="message" name="message" placeholder="Lütfen detaylı bilgi giriniz" required></textarea>
                             </div>
-                            <button type="submit" class="cta-button" style="width: 100%;">GÖNDER</button>
+                            <button type="submit" class="cta-button" style="width: 100%; margin-top: 10px;">🚀 GÖNDER</button>
                         </form>
                     </div>
                 </div>
@@ -736,13 +837,11 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 ESENYURT MUTLU METAL. Tüm Hakları Saklıdır. | Çevre Dostu Hurda Geri Dönüşümü</p>
+        <p>&copy; 2026 ESENYURT MUTLU METAL. Tüm Hakları Saklıdır. | 🌍 Çevre Dostu Hurda Geri Dönüşümü</p>
     </footer>
 
     <script>
-        // Form Gönderimi
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Teşekkürler! Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.');
