@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hal342.github.io/halil-site/sitemap.xml
