@@ -423,6 +423,7 @@
             overflow: hidden;
             animation: fadeInUp 1s ease;
             border: 1px solid #333;
+            margin-bottom: 30px;
         }
 
         .price-table-header {
@@ -467,6 +468,33 @@
         .price-value {
             font-weight: 700;
             color: var(--accent);
+        }
+
+        .price-note {
+            background: var(--secondary);
+            border: 1px solid #333;
+            border-top: 3px solid var(--accent);
+            border-radius: 5px;
+            padding: 20px 30px;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .price-note p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .price-note a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .price-note a:hover {
+            color: #ffb300;
         }
 
         /* BLOG SECTION */
@@ -802,15 +830,45 @@
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .price-table-header,
+            .price-table-row {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 768px) {
             .header-container {
-                padding: 0 20px;
+                padding: 0 15px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .logo {
+                order: 1;
+                width: 100%;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .logo-image {
+                height: 35px;
+            }
+
+            .logo-text {
+                font-size: 11px;
             }
 
             nav {
                 display: none;
+            }
+
+            .phone-btn {
+                order: 2;
+                width: 100%;
+                justify-content: center;
+                padding: 10px 15px;
+                font-size: 11px;
             }
 
             .hero {
@@ -848,14 +906,34 @@
 
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
 
             .prices-section {
                 padding: 60px 20px;
             }
 
+            .price-table-header,
+            .price-table-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 15px 20px;
+            }
+
+            .price-note {
+                padding: 15px 20px;
+            }
+
             .blog {
                 padding: 60px 20px;
+            }
+
+            .blog-post {
+                padding: 25px;
+            }
+
+            .blog-post h3 {
+                font-size: 18px;
             }
 
             .cta-section {
@@ -868,12 +946,21 @@
                 text-align: center;
             }
 
+            .cta-text h2 {
+                font-size: 22px;
+            }
+
             .gallery {
                 padding: 60px 20px;
             }
 
             .gallery-grid {
                 grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .gallery-item img {
+                height: 200px;
             }
 
             .contact {
@@ -888,14 +975,15 @@
             .footer-container {
                 grid-template-columns: 1fr;
                 gap: 25px;
+                padding: 0 20px;
             }
 
             .section-title {
                 font-size: 24px;
             }
 
-            .logo-image {
-                height: 40px;
+            footer {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -906,7 +994,7 @@
         <div class="header-container">
             <a href="#home" class="logo">
                 <img src="https://r.resimlink.com/tjyGgX.png" alt="Esenyurt Mutlu Metal Logo" class="logo-image">
-                <span class="logo-text">ESENYURT MUTLU METAL</span>
+                <span class="logo-text">ESENYURT<br>MUTLU METAL</span>
             </a>
             <nav>
                 <a onclick="document.getElementById('home').scrollIntoView()">Anasayfa</a>
@@ -1031,24 +1119,28 @@
                 </div>
                 <div class="price-table-row">
                     <div class="price-item"><span class="price-icon">🔧</span>Demir Hurda</div>
-                    <div class="price-value">7,50 TL</div>
+                    <div class="price-value">12-15 TL</div>
                 </div>
                 <div class="price-table-row">
                     <div class="price-item"><span class="price-icon">🔌</span>Bakır Hurda</div>
-                    <div class="price-value">260,00 TL</div>
+                    <div class="price-value">650-670 TL</div>
                 </div>
                 <div class="price-table-row">
                     <div class="price-item"><span class="price-icon">⚙️</span>Aluminyum Hurda</div>
-                    <div class="price-value">68,00 TL</div>
+                    <div class="price-value">160 TL</div>
                 </div>
                 <div class="price-table-row">
                     <div class="price-item"><span class="price-icon">💎</span>Sarı Hurda</div>
-                    <div class="price-value">160,00 TL</div>
+                    <div class="price-value">320 TL</div>
                 </div>
                 <div class="price-table-row">
                     <div class="price-item"><span class="price-icon">🔗</span>Kablo Hurda</div>
-                    <div class="price-value">45,00 TL</div>
+                    <div class="price-value">150-570 TL</div>
                 </div>
+            </div>
+            <div class="price-note">
+                <p>💡 Daha fazla hurda türü ve detaylı fiyatlandırma için bizi arayın!</p>
+                <a href="tel:+905445991874">📞 +90 544 599 1874</a>
             </div>
         </div>
     </section>
@@ -1058,17 +1150,17 @@
         <div class="blog-container">
             <h2 class="section-title">BLOG</h2>
             <div class="blog-post">
-                <h3>🌱 Hurda Geri Dönüşümün Çevre ve Ekonomiye Katkısı</h3>
+                <h3>🌱 Hurda Geri Dönüşümünün Çevre ve Ekonomiye Katkısı</h3>
                 <p class="blog-meta">📅 Yayın Tarihi: 8 Ağustos 2026 | 📍 Esenyurt, İstanbul</p>
                 
                 <p><strong>Geri dönüşüm nedir ve neden önemlidir?</strong></p>
                 <p>Geri dönüşüm, atık malzemelerin yeniden üretim süreçlerine dahil edilmesidir. Hurda metal geri dönüşümü, özellikle çevre koruma açısından hayati bir rol oynamaktadır. Metal üretimi çok enerji yoğun bir süreçtir ve hammaddeden metal üretmek, geri dönüşüm yoluyla üretmekten çok daha fazla enerji tüketir.</p>
 
-                <p><strong>Esenyurt ve İstanbul'da Hurda Geri Dönüşümün Önemi</strong></p>
+                <p><strong>Esenyurt ve İstanbul'da Hurda Geri Dönüşümünün Önemi</strong></p>
                 <p>Esenyurt, İstanbul'un gelişen endüstriyel bölgelerinden biri olarak, hurda metal geri dönüşümünde önemli bir rol oynamaktadır. Esenyurt MUTLU METAL olarak, bölgemizin atıklarını değerlendirerek hem ekonomiye hem de çevreye katkı sağlıyoruz. Esenyurt'ta biriken hurda metalleri profesyonelce işleyerek, yeni ürünlerin ham maddesi haline dönüştürüyoruz.</p>
 
                 <p><strong>Çevresel Faydalar</strong></p>
-                <p>Metal geri dönüşümü, maden işletmelerinin sayısını azaltarak doğal kaynakların tüketimini düşürür. Ayrıca, geri dönüşüm sırasında ortaya çıkan karbon salınımları, yeni metal üretiminden %90 oranında daha azdır. Bu da küresel ısınma ve iklim değişlikliği ile mücadelede büyük katkı sağlar.</p>
+                <p>Metal geri dönüşümü, maden işletmelerinin sayısını azaltarak doğal kaynakların tüketimini düşürür. Ayrıca, geri dönüşüm sırasında ortaya çıkan karbon salınımları, yeni metal üretiminden %90 oranında daha azdır. Bu da küresel ısınma ve iklim değişikliği ile mücadelede büyük katkı sağlar.</p>
 
                 <p><strong>Ekonomik Faydalar</strong></p>
                 <p>Hurda metal satışı, hem bireysel bazda ek gelir kaynağı olabilir hem de ülke ekonomisine katkı sağlar. Esenyurt'ta ve İstanbul genelinde geri dönüşüm endüstrisi, milyonlarca kişiye istihdam imkanı sunmaktadır. Esenyurt MUTLU METAL olarak, bu önemli görevde yer almaktan gurur duyuyor ve müşterilerimize en adil fiyatları sunmaya devam ediyoruz.</p>
