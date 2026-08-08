@@ -75,7 +75,7 @@
         /* HEADER */
         header {
             background: #1a1a1a;
-            padding: 18px 0;
+            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -95,17 +95,30 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-size: 14px;
             font-weight: 800;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 1.5px;
             line-height: 1.2;
+            text-decoration: none;
+            transition: transform 0.3s ease;
         }
 
-        .logo-icon {
-            font-size: 28px;
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
         }
 
         nav {
@@ -880,6 +893,10 @@
             .section-title {
                 font-size: 24px;
             }
+
+            .logo-image {
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -887,10 +904,10 @@
     <!-- HEADER -->
     <header>
         <div class="header-container">
-            <div class="logo">
-                <span class="logo-icon">🏭</span>
-                <span>ESENYURT<br>MUTLU METAL</span>
-            </div>
+            <a href="#home" class="logo">
+                <img src="https://r.resimlink.com/tjyGgX.png" alt="Esenyurt Mutlu Metal Logo" class="logo-image">
+                <span class="logo-text">ESENYURT MUTLU METAL</span>
+            </a>
             <nav>
                 <a onclick="document.getElementById('home').scrollIntoView()">Anasayfa</a>
                 <a onclick="document.getElementById('services').scrollIntoView()">Hizmetlerimiz</a>
