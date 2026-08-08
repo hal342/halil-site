@@ -1,0 +1,18 @@
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            gap: 2px;
+        }
+
+        .logo-text span:first-child {
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .logo-text span:last-child {
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
